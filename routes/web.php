@@ -24,4 +24,4 @@ Route::get('/', fn() => view('landingpage.pages.index'));
 Route::get('/login', fn() => view('landingpage.pages.login'));
 Route::get('/kontak', fn() => view('landingpage.pages.kontak'));
 
-Route::get('/dashboard', fn() => view('dashboard.pages.index'));
+Route::get('/admin', fn() => view('admin.pages.index'));
