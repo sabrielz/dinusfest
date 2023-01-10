@@ -209,7 +209,12 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'ExampleClass' => App\Example\ExampleClass::class,
+        // 'ConfigHelper' => App\Helpers\ConfigHelper::class,
+        // 'FormHelper' => App\Helpers\FormHelper::class,
+        // 'StringHelper' => App\Helpers\StringHelper::class,
+        // 'NumberHelper' => App\Helpers\NumberHelper::class,
+        // 'ModelHelper' => App\Helpers\ModelHelper::class,
+        'GeneralHelper' => App\Helpers\GeneralHelper::class,
     ])->toArray(),
 
 ];

@@ -24,4 +24,11 @@ Route::get('/', fn() => view('landingpage.pages.index'));
 Route::get('/login', fn() => view('landingpage.pages.login'));
 Route::get('/kontak', fn() => view('landingpage.pages.kontak'));
 
-Route::get('/admin', fn() => view('admin.pages.index'));
+Route::prefix('/admin')->group(function () {
+	Route::get('/', fn() => view('admin.pages.index'));
+	Route::get('/topup', fn() => view('admin.pages.topup'));
+	Route::get('/profil', fn() => view('admin.pages.profil'));
+	Route::get('/pengguna', fn() => view('admin.pages.pengguna.index'));
+	Route::get('/pengguna/tambah', fn() => view('admin.pages.pengguna.tambah'));
+	Route::get('/laporan', fn() => view('admin.pages.laporan'));
+});
