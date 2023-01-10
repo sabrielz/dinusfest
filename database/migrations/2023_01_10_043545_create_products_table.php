@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tb_users', function (Blueprint $table) {
-            $table->id();
-            $table->string('type');
+        Schema::create('tb_products', function (Blueprint $table) {
+            $table->id('product_id');
+						$table->foreignId('category_id');
+						$table->string('product_name');
+						$table->integer('product_price');
             $table->timestamps();
-						$table->dateTime('deleted_at');
+						$table->dateTime('deleted_at')->nullable();
         });
     }
 
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_users');
+        Schema::dropIfExists('tb_products');
     }
 };

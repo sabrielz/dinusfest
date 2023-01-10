@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tb_users', function (Blueprint $table) {
-            $table->id();
-            $table->string('type');
+        Schema::create('tb_canteens', function (Blueprint $table) {
+            $table->id('canteen_id');
+						$table->string('canteen_name');
+						$table->string('canteen_owner');
             $table->timestamps();
-						$table->dateTime('deleted_at');
+						$table->dateTime('deleted_at')->nullable();
         });
     }
 
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_users');
+        Schema::dropIfExists('tb_canteens');
     }
 };
