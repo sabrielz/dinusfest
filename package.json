@@ -2,7 +2,8 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "tw:watch": "tailwindcss --config=public/dist/js/tailwind.config.js --output=public/dist/css/landingpage.css --watch"
     },
     "devDependencies": {
         "axios": "^1.1.2",
@@ -10,5 +11,11 @@
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
         "vite": "^4.0.0"
-    }
+    },
+    "name": "dinusfest",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "https://github.com/sabrielz/dinusfest.git",
+    "author": "Sabriel <sadewobrilianrafael@gmail.com>",
+    "license": "MIT"
 }
