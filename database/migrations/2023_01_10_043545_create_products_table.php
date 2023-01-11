@@ -19,7 +19,7 @@ return new class extends Migration
 						$table->string('product_name');
 						$table->integer('product_price');
             $table->timestamps();
-						$table->dateTime('deleted_at')->nullable();
+						$table->softDeletes();
         });
     }
 

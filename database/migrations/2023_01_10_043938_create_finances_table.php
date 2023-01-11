@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id('finance_id');
 						$table->integer('finance_balance');
             $table->timestamps();
-						$table->dateTime('deleted_at')->nullable();
+						$table->softDeletes();
         });
     }
 

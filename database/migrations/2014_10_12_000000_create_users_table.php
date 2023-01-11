@@ -24,6 +24,10 @@ return new class extends Migration
             $table->foreignId('limiter_id')->default(0);
             $table->softDeletes();
             $table->timestamps();
+<<<<<<< HEAD
+=======
+						$table->softDeletes();
+>>>>>>> master
         });
     }
 
