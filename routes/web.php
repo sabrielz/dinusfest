@@ -32,3 +32,12 @@ Route::prefix('/admin')->group(function () {
 	Route::get('/pengguna/tambah', fn() => view('admin.pages.pengguna.tambah'));
 	Route::get('/laporan', fn() => view('admin.pages.laporan'));
 });
+
+Route::prefix('/siswa')->group(function () {
+	Route::get('/', fn() => view('siswa.pages.index'));
+	Route::get('/laporan', fn() => view('siswa.pages.laporan'));
+	Route::get('/belanja', fn() => view('siswa.pages.belanja.index'));
+	Route::get('/belanja/tambah', fn() => view('siswa.pages.belanja.tambah'));
+	Route::get('/belanja/keranjang', fn() => view('siswa.pages.belanja.keranjang'));
+	Route::get('/profil', fn() => view('siswa.pages.profile'));
+});
