@@ -1,6 +1,8 @@
 <?php
 
 // use App\Http\Controllers\ViewController;
+
+use App\Http\Controllers\Siswa\BelanjaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,8 +38,8 @@ Route::prefix('/admin')->group(function () {
 Route::prefix('/siswa')->group(function () {
 	Route::get('/', fn() => view('siswa.pages.index'));
 	Route::get('/laporan', fn() => view('siswa.pages.laporan'));
-	Route::get('/belanja', fn() => view('siswa.pages.belanja.index'));
-	Route::get('/belanja/tambah', fn() => view('siswa.pages.belanja.tambah'));
+	Route::get('/belanja', [BelanjaController::class, 'index']);
+	Route::get('/kantin/{canteen}', [BelanjaController::class, 'showCanteen']);
 	Route::get('/belanja/keranjang', fn() => view('siswa.pages.belanja.keranjang'));
 	Route::get('/profil', fn() => view('siswa.pages.profile'));
 });
