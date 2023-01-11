@@ -5,10 +5,7 @@
 	<div class="row align-items-center my-4">
 		<div class="col">
 			<h2 class="page-title">Belanja</h2>
-			<p class="text-muted">Daftar produk yang tersedia.</p>
-		</div>
-		<div class="col-auto">
-			<a href="belanja/keranjang" class="btn btn-primary"><span class="fe fe-shopping-cart fe-12 mr-2"></span>Keranjang Saya</a>
+			<p class="text-muted">Kantin yang tersedia.</p>
 		</div>
 	</div>
 
@@ -19,26 +16,24 @@
 					<thead>
 						<tr>
 							<th>No</th>
-							<th>Nama Produk</th>
-							<th>Jenis</th>
-							<th>Harga</th>
+							<th>Nama Kantin</th>
 							<th>Tindakan</th>
 						</tr>
 					</thead>
 					<tbody>
+						@foreach ($kantin as $item)
 						<tr>
-							<td>1</td>
-							<td>Permen</td>
-							<td>Makanan</td>
-							<td>{{ GeneralHelper::toRupiah(1000) }}</td>
-							<td>
-								<div class="btn-group btn-group-sm" role="group">
-									<a href="belanja/tambah" class="btn btn-warning">
-										Masukkan keranjang <i class="fe fe-shopping-bag"></i>
-									</a>
-								</div>
-							</td>
-						</tr>
+								<td>{{ $loop->iteration }}</td>
+								<td>{{ $item->canteen_name }}</td>
+								<td>
+									<div class="btn-group btn-group-sm" role="group">
+										<a href="kantin/{{ $item->canteen_id }}" class="btn btn-warning">
+											Kunjungi <i class="fe fe-arrow-right"></i>
+										</a>
+									</div>
+								</td>
+							</tr>
+							@endforeach
 					</tbody>
 				</table>
 			</div>
