@@ -20,7 +20,7 @@ return new class extends Migration
 						$table->integer('bill');
 						$table->json('items');
             $table->timestamps();
-						$table->dateTime('deleted_at')->nullable();
+						$table->softDeletes();
         });
     }
 

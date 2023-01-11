@@ -14,4 +14,8 @@ class Canteen extends Model
 		protected $primaryKey = 'canteen_id';
 		protected $guarded = ['canteen_id'];
 		protected $dates = ['deleted_at'];
+
+		protected $casts = [
+			'products' => 'array'
+		];
 }

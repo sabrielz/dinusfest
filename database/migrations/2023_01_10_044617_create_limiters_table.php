@@ -18,7 +18,7 @@ return new class extends Migration
 						$table->json('items');
 						$table->integer('daily_items');
             $table->timestamps();
-						$table->dateTime('deleted_at')->nullable();
+						$table->softDeletes();
         });
     }
 
