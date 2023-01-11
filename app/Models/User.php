@@ -27,7 +27,7 @@ class User extends Authenticatable
 
 		public function profile()
 		{
-			return $this->belongsTo(UserProfile::class, 'profile_id', 'id');
+			return $this->belongsTo(UserProfile::class, 'profile_id', 'profile_id');
 		}
 
 		public function finance()
@@ -40,10 +40,10 @@ class User extends Authenticatable
 			return $this->belongsTo(User::class, 'parent_id', 'id');
 		}
 
-		public function children()
-		{
-			return $this->hasMany(User::class, 'parent_id', 'id');
-		}
+		// public function children()
+		// {
+		// 	return $this->hasMany(User::class, 'parent_id', 'id');
+		// }
 
 		public function limiter()
 		{

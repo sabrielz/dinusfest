@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class PenggunaController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,10 +23,8 @@ class PenggunaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function tambah() {
-        return view('admin.pages.pengguna.tambah', [
-
-        ]);
+    public function create() {
+        return view('admin.pages.pengguna.tambah');
     }
 
     /**
@@ -59,7 +57,7 @@ class PenggunaController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('dashboard.pages.profil');
     }
 
     /**

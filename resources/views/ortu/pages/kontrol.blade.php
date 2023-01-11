@@ -37,7 +37,7 @@
 			</div>
 		</div>
 
-		<h2 class="page-title">Pilih Jajan</h2>
+		<h3 class="page-title">Pilih Jajan</h3>
 		<p class="text-muted">Daftar jajan yang tersedia.</p>
 
 		<div class="card w-100 shadow mb-4">
@@ -157,7 +157,7 @@
 		@endpush
 
 		<div class="row justify-content-center gap-2 g-2" style="gap: .5rem">
-			<button type="submit" onclick="$('#resultForm').trigger('submit')" class="btn btn-sm px-4 btn-primary">
+			<button type="submit" onclick="$('#resultForm').trigger('submit')" class="btn px-4 btn-primary">
 				Submit <i class="fe fe-arrow-right"></i>
 			</button>
 		</div>

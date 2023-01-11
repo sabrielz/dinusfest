@@ -3,9 +3,10 @@
 // use App\Http\Controllers\ViewController;
 
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\PenggunaController;
-use App\Http\Controllers\View\DashboardController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\View\AdminController;
 use App\Http\Controllers\View\LandingPageController;
+use App\Http\Controllers\View\OrtuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,26 +32,40 @@ Route::controller(LandingPageController::class)->group(function () {
 	Route::get('/login', 'login');
 	Route::get('/kontak', 'kontak');
 });
-Route::post('/login', [LoginController::class, 'authenticate']);
 
-Route::prefix('/dashboard')->group(function () {
-	Route::controller(DashboardController::class)->group(function () {
+Route::controller(LoginController::class)->group(function () {
+	Route::post('/login', 'authenticate');
+	Route::get('/logout', 'logout');
+});
+
+Route::controller(UserController::class)->group(function () {
+	Route::get('/profil/{tb_users:username}', 'edit');
+	Route::post('/profil/{tb_users:username}', 'update');
+});
+
+Route::prefix('/admin')->group(function () {
+	Route::controller(AdminController::class)->group(function () {
 		Route::get('/', 'index');
 		Route::get('/topup', 'topup');
 		Route::get('/laporan', 'laporan');
-		Route::get('/kontrol', 'kontrol');
 	});
 
 	Route::prefix('/pengguna')->group(function () {
-		Route::controller(PenggunaController::class)->group(function () {
+		Route::controller(UserController::class)->group(function () {
 			Route::get('/', 'index');
-			Route::get('/tambah', 'tambah');
+			Route::get('/tambah', 'create');
 		});
 	});
-
 });
 
-// Route::prefix('/dashboard')->group(function () {
+Route::prefix('/ortu')->group(function () {
+	Route::controller(OrtuController::class)->group(function () {
+		Route::get('/', 'index');
+		Route::get('/kontrol', 'kontrol');
+	});
+});
+
+// Route::prefix('/admin')->group(function () {
 // 	Route::get('/', fn() => view('dashboard.pages.index'));
 // 	Route::get('/topup', fn() => view('dashboard.pages.topup'));
 // 	Route::get('/profil', fn() => view('dashboard.pages.profil'));
