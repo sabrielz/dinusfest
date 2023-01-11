@@ -108,17 +108,18 @@
 	}
 	
 
-	function parseRow(row) {
+	function parseRow(row, type) {
 		let arr = [];
 		let cols = $(row).find('td');
 		cols.each((i, col) => {
 			if (i === cols.length-1 || i === 0) return;
+			if (i === cols.length-2 && type === 'selected') return;
 			arr.push(col.innerText);
 		})
 		return arr;
 	}
 
-	function renderTable(tbody, action, selecteds) {
+	function renderTable(tbody, action, selecteds, type) {
 		$(tbody).empty(); let iter = 1;
 		for (let jajanId in selecteds) {
 			let items = selecteds[jajanId];
@@ -129,6 +130,10 @@
 			$.each(items, function (i, text) {
 				newrow.innerHTML += `<td>${text}</td>`;
 			});
+
+			if (type === 'selected') {
+				newrow.innerHTML += `<td><input type="number" class="form-control" value="1" /></td>`
+			}
 			
 			newrow.innerHTML += `<td>${action}</td>`;
 			$(tbody).append(newrow);
@@ -136,8 +141,8 @@
 	}
 
 	function render() {
-		renderTable(selectors.selected, actions.hapus, selected);
-		renderTable(selectors.products, actions.tambah, products);
+		renderTable(selectors.selected, actions.hapus, selected, 'selected');
+		renderTable(selectors.products, actions.tambah, products, 'product');
 	} render()
 	
 	function clear() {
@@ -149,10 +154,11 @@
 	function changeJajan (elem) {
 		elem = $(elem);
 		let type = elem.attr('data-jajan-action');
+		let subtype = type === 'tambah' ? 'product' : 'selected';
 		let row = elem.closest('tr');
 		let jajanId = $(row).attr('data-jajan-id');
 		jajanId = Number(jajanId);
-		let rowdata = parseRow(row);
+		let rowdata = parseRow(row, subtype);
 		if (type === 'tambah') {
 			delete products[jajanId];
 			// selected = Object.assign({`${jajanId}`: rowdata}, selected);
@@ -162,6 +168,7 @@
 			// products = Object.assign({`${jajanId}`: rowdata}, products);
 			products[jajanId] = rowdata;
 		}
+		
 		render();
 	}
 
