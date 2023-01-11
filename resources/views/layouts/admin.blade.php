@@ -38,10 +38,11 @@
 	<script src="/tinydash/js/moment.min.js"></script>
 	<script src="/tinydash/js/bootstrap.min.js"></script>
 	<script src="/tinydash/js/simplebar.min.js"></script>
+	<script src='/tinydash/js/jquery.stickOnScroll.js'></script>
 	<script src="/tinydash/js/tinycolor-min.js"></script>
 	<script src="/tinydash/js/config.js"></script>
 	<script src="/tinydash/js/apps.js"></script>
 	@stack('scripts')
-	<script> @stack('inscript') </script>
+	{{-- <script> @stack('inscript') </script> --}}
 </body>
 </html>

@@ -1,3 +1,18 @@
+@php $sidebar_menu = array_merge(
+	[
+		['href' => '/dashboard', 'icon' => 'fe fe-home', 'label' => 'Beranda'],
+		['href' => '/dashboard/topup', 'icon' => 'fe fe-dollar-sign', 'label' => 'Topup'],
+		['href' => '/dashboard/pengguna', 'icon' => 'fe fe-users', 'label' => 'Pengguna'],
+		['href' => '/dashboard/laporan', 'icon' => 'fe fe-align-right', 'label' => 'Laporan'],
+		['href' => '/logout', 'icon' => 'fe fe-log-out', 'label' => 'Logout'],
+	],
+	[
+		['href' => '#', 'icon' => 'fe-arrow-down', 'label' => 'Ortu Menu (Coming Soon)'],
+		['href' => '/dashboard/kontrol', 'icon' => 'fe fe-settings', 'label' => 'Kontrol'],
+	]
+
+) @endphp
+
 <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
 	<a href="javascript:void()" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
 		<i class="fe fe-x"><span class="sr-only"></span></i>
@@ -17,53 +32,42 @@
 			</a>
 		</div>
 		<ul class="navbar-nav flex-fill w-100 mb-2">
-			<li class="nav-item">
-				<a href="/admin" class="nav-link">
-					<i class="fe fe-home fe-16"></i>
-					<span class="ml-3 item-text">Beranda</span>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a href="/admin/topup" class="nav-link">
-					<i class="fe fe-dollar-sign fe-16"></i>
-					<span class="ml-3 item-text">Topup</span>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a href="/admin/pengguna" class="nav-link">
-					<i class="fe fe-users fe-16"></i>
-					<span class="ml-3 item-text">Pengguna</span>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a href="/admin/laporan" class="nav-link">
-					<i class="fe fe-file-text fe-16"></i>
-					<span class="ml-3 item-text">Laporan</span>
-				</a>
-			</li>
-			{{-- <li class="nav-item dropdown">
-				<a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-					<i class="fe fe-home fe-16"></i>
-					<span class="ml-3 item-text">Dashboard</span><span class="sr-only">(current)</span>
-				</a>
-				<ul class="collapse list-unstyled pl-4 w-100" id="dashboard">
-					<li class="nav-item active">
-						<a class="nav-link pl-3" href="./index.html"><span class="ml-1 item-text">Default</span></a>
-					</li>
+			@foreach ($sidebar_menu as $menu)
+				@if (!isset($menu['dropdown']))
 					<li class="nav-item">
-						<a class="nav-link pl-3" href="./dashboard-analytics.html"><span class="ml-1 item-text">Analytics</span></a>
+						<a href="{{ $menu['href'] }}" class="nav-link">
+							<i class="fe {{ $menu['icon'] }} fe-16"></i>
+							<span class="ml-3 item-text">{{ $menu['label'] }}</span>
+						</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link pl-3" href="./dashboard-sales.html"><span class="ml-1 item-text">E-commerce</span></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link pl-3" href="./dashboard-saas.html"><span class="ml-1 item-text">Saas Dashboard</span></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link pl-3" href="./dashboard-system.html"><span class="ml-1 item-text">Systems</span></a>
-					</li>
-				</ul>
-			</li> --}}
+				@else
+				<li class="nav-item dropdown">
+					<a href="javascript:void()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+						<i class="fe {{ $menu['icon'] }} fe-16"></i>
+						<span class="ml-3 item-text">Dashboard</span><span class="sr-only">(current)</span>
+					</a>
+					<ul class="collapse list-unstyled pl-4 w-100" id="dashboard">
+						<li class="nav-item active">
+							<a class="nav-link pl-3" href="./index.html"><span class="ml-1 item-text">Default</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link pl-3" href="./dashboard-analytics.html"><span class="ml-1 item-text">Analytics</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link pl-3" href="./dashboard-sales.html"><span class="ml-1 item-text">E-commerce</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link pl-3" href="./dashboard-saas.html"><span class="ml-1 item-text">Saas Dashboard</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link pl-3" href="./dashboard-system.html"><span class="ml-1 item-text">Systems</span></a>
+						</li>
+					</ul>
+				</li>
+				@endif
+			@endforeach
+			
+			
 		</ul>
 
 		{{-- <p class="text-muted nav-heading mt-4 mb-1">

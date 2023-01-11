@@ -2,6 +2,8 @@
 
 namespace App\Helpers;
 
+use DateTime;
+
 class GeneralHelper {
 	
 	public static function initInput(array $input) :array {
@@ -35,6 +37,11 @@ class GeneralHelper {
 	
 	public static function toRupiah($price, $prefix = 'Rp') {
 		return $prefix . number_format($price, 2, ',', '.');
+	}
+
+	public static function toTanggal($tanggal = null) {
+		$date = new DateTime($tanggal);
+		return date_format($date, 'd-m-Y H:i:s');
 	}
 	
 }

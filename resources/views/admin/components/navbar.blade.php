@@ -37,9 +37,8 @@
 				</span>
 			</a>
 			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-				<a class="dropdown-item" href="javascript:void()">Profile</a>
-				<a class="dropdown-item" href="javascript:void()">Settings</a>
-				<a class="dropdown-item" href="javascript:void()">Activities</a>
+				<a class="dropdown-item" href="/dashboard/profil">Profil</a>
+				<a class="dropdown-item text-danger" href="/logout">Log Out</a>
 			</div>
 		</li>
 	</ul>
