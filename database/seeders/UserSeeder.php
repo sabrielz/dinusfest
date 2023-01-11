@@ -1,0 +1,43 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Finance;
+use App\Models\User;
+use App\Models\UserProfile;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
+class UserSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $iter = 0;
+        $types = ['ortu', 'siswa', 'admin'];
+        do {
+            $finance = Finance::create([
+                'finance_balance' => 200000,
+            ]);
+            $profile = UserProfile::create([
+                'name' => strtoupper($types[$iter]),
+                'address' => $types[$iter],
+                'birth_date' => now(),
+            ]);
+            $user = User::create([
+                'username' => $types[$iter],
+                'password' => Hash::make('123'),
+                'type' => $types[$iter],
+                'finance_id' => $iter+1,
+                'profile_id' => $iter+1,
+            ]);
+            $iter++;
+        } while ($iter < count($types));
+    }
+}

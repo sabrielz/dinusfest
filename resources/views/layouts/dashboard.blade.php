@@ -22,8 +22,8 @@
 </head>
 <body class="vertical  light">
 	<div class="wrapper">
-		@include('admin.components.navbar')
-		@include('admin.components.sidebar')
+		@include('dashboard.components.navbar')
+		@include('dashboard.components.sidebar')
 		<main role="main" class="main-content">
 			<div class="container-fluid">
 				<div class="row justify-content-center">

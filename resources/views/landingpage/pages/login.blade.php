@@ -41,7 +41,7 @@
 			
 			<h1 class="text-3xl font-bold mb-1 mt-4 text-center">Login</h1>
 			<p class="text-center mb-6">Masukkan username dan password.</p>
-			<form action="" method="post" class="">
+			<form action="/login" method="post" class="">
 				@csrf
 	
 				@php $inputs = [
@@ -51,9 +51,13 @@
 	
 				<div class="w-full flex flex-col gap-2 mb-4">
 						@foreach ($inputs as $input)
+						@php $input = GeneralHelper::initInput($input) @endphp
+						
 						<div class="mb-1">
 							<input
 								type="{{ $input['type'] }}"
+								name="{{ $input['name'] }}"
+								value="{{ $input['value'] }}"
 								placeholder="{{ $input['label'] ?? $input['placeholder'] }}"
 								class="w-[280px] min-w-[200px] max-w-[400px] block py-2 px-2 border text-sm"
 								{!! $input['attr'] ?? '' !!}
