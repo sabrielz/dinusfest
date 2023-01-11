@@ -1,17 +1,17 @@
-@php $sidebar_menu = array_merge(
-	[
+@php
+$type = auth()->user()->type;
+$sidebar_menu = array_merge(
+	$type === 'admin' ? [
 		['href' => '/dashboard', 'icon' => 'fe fe-home', 'label' => 'Beranda'],
 		['href' => '/dashboard/topup', 'icon' => 'fe fe-dollar-sign', 'label' => 'Topup'],
 		['href' => '/dashboard/pengguna', 'icon' => 'fe fe-users', 'label' => 'Pengguna'],
 		['href' => '/dashboard/laporan', 'icon' => 'fe fe-file-text', 'label' => 'Laporan'],
 		['href' => '/logout', 'icon' => 'fe fe-log-out', 'label' => 'Logout'],
-	],
-	[
-		['href' => '#', 'icon' => '', 'label' => ''],
-		['href' => '#', 'icon' => 'fe-arrow-down', 'label' => 'Ortu Menu (Coming Soon)'],
+	] : ( $type === 'ortu' ? [
 		['href' => 'javascript:void()', 'icon' => 'fe fe-link', 'label' => 'Batasi Pembelian'],
-		// ['href' => '/dashboard/kontrol', 'icon' => 'fe fe-settings', 'label' => 'Kontrol'],
-	]
+	] : [
+
+	] )
 
 ) @endphp
 
