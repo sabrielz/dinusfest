@@ -41,11 +41,11 @@ Route::prefix('/dashboard')->group(function () {
 	]));
 });
 
-// Route::prefix('/ortu')->group(function () {
-// 	Route::get('/', fn() => view('ortu.pages.index'));
-// 	// Route::get('/topup', fn() => view('admin.pages.topup'));
-// 	Route::get('/profil', fn() => view('ortu.pages.profil'));
-// 	Route::get('/pengguna', fn() => view('ortu.pages.pengguna.index'));
-// 	Route::get('/pengguna/tambah', fn() => view('ortu.pages.pengguna.tambah'));
-// 	Route::get('/laporan', fn() => view('ortu.pages.laporan'));
-// });
+Route::prefix('/siswa')->group(function () {
+	Route::get('/', fn() => view('siswa.pages.index'));
+	Route::get('/laporan', fn() => view('siswa.pages.laporan'));
+	Route::get('/belanja', fn() => view('siswa.pages.belanja.index'));
+	Route::get('/belanja/tambah', fn() => view('siswa.pages.belanja.tambah'));
+	Route::get('/belanja/keranjang', fn() => view('siswa.pages.belanja.keranjang'));
+	Route::get('/profil', fn() => view('siswa.pages.profile'));
+});
