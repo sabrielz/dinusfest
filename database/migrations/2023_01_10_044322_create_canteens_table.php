@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id('canteen_id');
 						$table->string('canteen_name');
 						$table->string('canteen_owner');
+						$table->json('products');
             $table->timestamps();
 						$table->dateTime('deleted_at')->nullable();
         });

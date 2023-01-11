@@ -17,13 +17,13 @@ return new class extends Migration
             $table->id();
 						$table->foreignId('profile_id');
 						$table->foreignId('finance_id');
-						$table->foreignId('parent_id')->nullable();
-						$table->foreignId('limiter_id')->nullable();
+						$table->foreignId('parent_id')->default(0);
+						$table->foreignId('limiter_id')->default(0);
 						$table->string('username');
 						$table->string('password');
             $table->string('type');
             $table->timestamps();
-						$table->dateTime('deleted_at');
+						$table->softDeletes();
         });
     }
 

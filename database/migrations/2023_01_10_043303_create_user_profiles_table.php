@@ -19,7 +19,7 @@ return new class extends Migration
 						$table->string('address');
 						$table->date('birth_date');
             $table->timestamps();
-						$table->dateTime('deleted_at')->nullable();
+						$table->softDeletes();
         });
     }
 
