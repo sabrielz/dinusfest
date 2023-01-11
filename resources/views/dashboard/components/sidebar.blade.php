@@ -8,7 +8,7 @@ $sidebar_menu = array_merge(
 		['href' => '/dashboard/laporan', 'icon' => 'fe fe-file-text', 'label' => 'Laporan'],
 		['href' => '/logout', 'icon' => 'fe fe-log-out', 'label' => 'Logout'],
 	] : ( $type === 'ortu' ? [
-		['href' => 'javascript:void()', 'icon' => 'fe fe-link', 'label' => 'Batasi Pembelian'],
+		['href' => '/dashboard/kontrol', 'icon' => 'fe fe-link', 'label' => 'Batasi Pembelian'],
 	] : [
 
 	] )
