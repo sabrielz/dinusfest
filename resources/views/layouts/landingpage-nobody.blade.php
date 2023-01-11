@@ -22,13 +22,7 @@
   </head>
   <body>
 
-    <div id="wrapper" class="w-full min-h-screen flex justify-between items-center flex-col bg-light">
-			@include('landingpage.components.navbar')
-			{{-- <div id="content" class="flex-1 w-full flex justify-center items-center flex-col"> --}}
-				@yield('content')
-			{{-- </div> --}}
-			@include('landingpage.components.footer')
-		</div>
+		@yield('body')
 		
 		{{-- Javascript --}}
     <script src="/plugins/jquery/dist/jquery.min.js"></script>

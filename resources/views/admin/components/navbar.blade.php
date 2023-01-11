@@ -5,7 +5,7 @@
 	</button>
 
 	<a class="nav-link text-muted my-2 mr-auto" href="/admin">
-		Fintech
+		Sangumu
 	</a>
 	
 	{{-- <form class="form-inline mr-auto searchform text-muted">

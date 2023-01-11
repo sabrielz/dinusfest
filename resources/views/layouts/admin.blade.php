@@ -28,7 +28,7 @@
 			<div class="container-fluid">
 				<div class="row justify-content-center">
 					@yield('content')
-				<div class="row justify-content-center">
+				</div>
 			</div>
 		</main>
 	</div>

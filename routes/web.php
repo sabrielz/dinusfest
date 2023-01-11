@@ -32,7 +32,13 @@ Route::prefix('/dashboard')->group(function () {
 	Route::get('/pengguna/tambah', fn() => view('admin.pages.pengguna.tambah'));
 	Route::get('/laporan', fn() => view('admin.pages.laporan'));
 	
-	Route::get('/kontrol', fn() => view('admin.pages.kontrol'));
+	Route::get('/kontrol', fn() => view('admin.pages.kontrol', [
+		'data_jajan' => [
+			['product_name' => 'Batagor', 'product_price' => 5000],
+			['product_name' => 'APsdjasd', 'product_price' => 5000],
+			['product_name' => 'akjsnasjad', 'product_price' => 5000],
+		]
+	]));
 });
 
 // Route::prefix('/ortu')->group(function () {
