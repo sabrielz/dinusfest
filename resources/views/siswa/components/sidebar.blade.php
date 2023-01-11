@@ -34,10 +34,10 @@
 					<span class="ml-3 item-text">Belanja</span>
 				</a>
 			</li>
-			<li class="nav-item {{ Request::is('siswa/profile*') ? 'active' : '' }} w-100">
+			<li class="nav-item {{ Request::is('siswa/profil*') ? 'active' : '' }} w-100">
 				<a class="nav-link" href="/siswa/profil">
 					<i class="fe fe-user fe-16"></i>
-					<span class="ml-3 item-text">Profile</span>
+					<span class="ml-3 item-text">Profil</span>
 				</a>
 			</li>
 		</ul>
