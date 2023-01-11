@@ -1,9 +1,9 @@
-@extends('layouts.admin')
+@extends('layouts.dashboard')
 
 @section('content')
 	<div class="col-12">
 		<h2 class="page-title">Topup Saldo</h2>
-		<p class="text-muted">Lakukan pembayaran untuk mengisi saldo Fintech anda.</p>
+		<p class="text-muted">Lakukan pembayaran untuk mengisi saldo Sangumu anda.</p>
 
 		<form action="" method="post">
 			<div class="row">

@@ -1,9 +1,9 @@
-@extends('layouts.admin')
+@extends('layouts.dashboard')
 
 @section('content')
 	<div class="col-12">
 		<h2 class="page-title">Tambah Akun</h2>
-		<p class="text-muted">Tambahkan akun untuk pengguna Fintech.</p>
+		<p class="text-muted">Tambahkan akun untuk pengguna Sangumu.</p>
 
 		<form action="" method="post">
 			<div class="card card-shadow mb-4">

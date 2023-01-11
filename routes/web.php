@@ -3,6 +3,10 @@
 // use App\Http\Controllers\ViewController;
 
 use App\Http\Controllers\Siswa\BelanjaController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\View\DashboardController;
+use App\Http\Controllers\View\LandingPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,18 +26,47 @@ use Illuminate\Support\Facades\Route;
 
 // Route::controller(ViewController::class)->group(function () {
 // });
-Route::get('/', fn() => view('landingpage.pages.index'));
-Route::get('/login', fn() => view('landingpage.pages.login'));
-Route::get('/kontak', fn() => view('landingpage.pages.kontak'));
 
-Route::prefix('/admin')->group(function () {
-	Route::get('/', fn() => view('admin.pages.index'));
-	Route::get('/topup', fn() => view('admin.pages.topup'));
-	Route::get('/profil', fn() => view('admin.pages.profil'));
-	Route::get('/pengguna', fn() => view('admin.pages.pengguna.index'));
-	Route::get('/pengguna/tambah', fn() => view('admin.pages.pengguna.tambah'));
-	Route::get('/laporan', fn() => view('admin.pages.laporan'));
+Route::controller(LandingPageController::class)->group(function () {
+	Route::get('/', 'index');
+	Route::get('/login', 'login');
+	Route::get('/kontak', 'kontak');
 });
+Route::post('/login', [LoginController::class, 'authenticate']);
+
+Route::prefix('/dashboard')->group(function () {
+	Route::controller(DashboardController::class)->group(function () {
+		Route::get('/', 'index');
+		Route::get('/topup', 'topup');
+		Route::get('/laporan', 'laporan');
+		Route::get('/kontrol', 'kontrol');
+	});
+
+	Route::prefix('/pengguna')->group(function () {
+		Route::controller(PenggunaController::class)->group(function () {
+			Route::get('/', 'index');
+			Route::get('/tambah', 'tambah');
+		});
+	});
+
+});
+
+// Route::prefix('/dashboard')->group(function () {
+// 	Route::get('/', fn() => view('dashboard.pages.index'));
+// 	Route::get('/topup', fn() => view('dashboard.pages.topup'));
+// 	Route::get('/profil', fn() => view('dashboard.pages.profil'));
+// 	Route::get('/pengguna', fn() => view('dashboard.pages.pengguna.index'));
+// 	Route::get('/pengguna/tambah', fn() => view('dashboard.pages.pengguna.tambah'));
+// 	Route::get('/laporan', fn() => view('dashboard.pages.laporan'));
+	
+// 	Route::get('/kontrol', fn() => view('dashboard.pages.kontrol', [
+// 		'data_jajan' => [
+// 			['product_name' => 'Batagor', 'product_price' => 5000],
+// 			['product_name' => 'APsdjasd', 'product_price' => 5000],
+// 			['product_name' => 'akjsnasjad', 'product_price' => 5000],
+// 		]
+// 	]));
+// });
 
 Route::prefix('/siswa')->group(function () {
 	Route::get('/', fn() => view('siswa.pages.index'));

@@ -22,13 +22,13 @@
 </head>
 <body class="vertical  light">
 	<div class="wrapper">
-		@include('admin.components.navbar')
-		@include('admin.components.sidebar')
+		@include('dashboard.components.navbar')
+		@include('dashboard.components.sidebar')
 		<main role="main" class="main-content">
 			<div class="container-fluid">
 				<div class="row justify-content-center">
 					@yield('content')
-				<div class="row justify-content-center">
+				</div>
 			</div>
 		</main>
 	</div>
@@ -38,10 +38,11 @@
 	<script src="/tinydash/js/moment.min.js"></script>
 	<script src="/tinydash/js/bootstrap.min.js"></script>
 	<script src="/tinydash/js/simplebar.min.js"></script>
+	<script src='/tinydash/js/jquery.stickOnScroll.js'></script>
 	<script src="/tinydash/js/tinycolor-min.js"></script>
 	<script src="/tinydash/js/config.js"></script>
 	<script src="/tinydash/js/apps.js"></script>
 	@stack('scripts')
-	<script> @stack('inscript') </script>
+	{{-- <script> @stack('inscript') </script> --}}
 </body>
 </html>

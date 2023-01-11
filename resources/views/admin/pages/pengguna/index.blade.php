@@ -1,19 +1,14 @@
-@extends('layouts.admin')
+@extends('layouts.dashboard')
 
 @section('content')
 	<div class="col-12">
 		<h2 class="page-title">Pengguna</h2>
-		<p class="text-muted">Daftar pengguna akun Fintech.</p>
+		<p class="text-muted">Daftar pengguna akun Sangumu.</p>
 
 		<form action="" method="post">
 			<div class="card shadow mb-4">
-				<div class="card-header p-2">
-					<a href="pengguna/tambah" class="btn btn-link btn-sm">
-						<i class="fe fe-plus"></i> Tambah Akun
-					</a>
-				</div>
 				<div class="card-body p-0">
-					<table class="table table-hover">
+					<table class="table">
 						<thead>
 							<tr>
 								<th>No</th>
@@ -40,5 +35,11 @@
 				</div>
 			</div>
 		</form>
+
+		<div class="row justify-content-center">
+			<a href="pengguna/tambah" class="btn btn-primary">
+				<i class="fe fe-plus"></i> Tambah Pengguna
+			</a>
+		</div>
 	</div>
 @endsection
