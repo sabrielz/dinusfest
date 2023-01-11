@@ -5,8 +5,7 @@ namespace App\Helpers;
 class FormHelper
 {
 
-	public static function initInput(array $input) :array
-	{
+	public static function initInput(array $input) :array {
 		$icon = $input['icon'] ?? '';
 		$type = $input['type'] ?? 'text';
 		$variant = $input['variant'] ?? 'default';

@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="/tinydash/css/feather.css">
 
 	<!-- Date Range Picker CSS -->
-	<link rel="stylesheet" href="/tinydash/css/daterangepicker.css">
+	{{-- <link rel="stylesheet" href="/tinydash/css/daterangepicker.css"> --}}
 	<!-- App CSS -->
 	<link rel="stylesheet" href="/tinydash/css/app-light.css" id="lightTheme">
 	<link rel="stylesheet" href="/tinydash/css/app-dark.css" id="darkTheme" disabled>
@@ -26,7 +26,9 @@
 		@include('admin.components.sidebar')
 		<main role="main" class="main-content">
 			<div class="container-fluid">
-				@yield('content')
+				<div class="row justify-content-center">
+					@yield('content')
+				<div class="row justify-content-center">
 			</div>
 		</main>
 	</div>
@@ -36,10 +38,10 @@
 	<script src="/tinydash/js/moment.min.js"></script>
 	<script src="/tinydash/js/bootstrap.min.js"></script>
 	<script src="/tinydash/js/simplebar.min.js"></script>
-	<script src='/tinydash/js/daterangepicker.js'></script>
-	<script src='/tinydash/js/jquery.stickOnScroll.js'></script>
 	<script src="/tinydash/js/tinycolor-min.js"></script>
 	<script src="/tinydash/js/config.js"></script>
 	<script src="/tinydash/js/apps.js"></script>
+	@stack('scripts')
+	<script> @stack('inscript') </script>
 </body>
 </html>
