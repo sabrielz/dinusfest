@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('tb_users', function (Blueprint $table) {
             $table->id();
+						$table->foreignId('profile_id');
+						$table->foreignId('finance_id');
+						$table->foreignId('parent_id')->nullable();
+						$table->foreignId('limiter_id')->nullable();
+						$table->string('username');
+						$table->string('password');
             $table->string('type');
             $table->timestamps();
 						$table->dateTime('deleted_at');

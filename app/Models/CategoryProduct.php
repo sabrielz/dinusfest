@@ -14,4 +14,9 @@ class CategoryProduct extends Model
 		protected $primaryKey = 'category_id';
 		protected $guarded = ['category_id'];
 		protected $dates = ['deleted_at'];
+
+		public function Product()
+		{
+			return $this->hasMany(Product::class, 'category_id', 'category_id');
+		}
 }

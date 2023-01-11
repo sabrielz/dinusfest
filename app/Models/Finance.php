@@ -17,6 +17,6 @@ class Finance extends Model
 
 		public function user()
 		{
-			$this->hasMany(UserProfile::class, 'finance_id', 'finance_id');
+			$this->hasMany(User::class, 'finance_id', 'finance_id');
 		}
 }

@@ -21,12 +21,32 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'type',
+    protected $guarded = [
+        'id',
     ];
 
-		public function userProfile()
+		public function profile()
 		{
-			return $this->hasMany(UserProfile::class, 'id', 'user_id');
+			return $this->belongsTo(UserProfile::class, 'profile_id', 'id');
+		}
+
+		public function finance()
+		{
+			return $this->belongsTo(Finance::class, 'finance_id', 'finance_id');
+		}
+
+		public function parent()
+		{
+			return $this->belongsTo(User::class, 'parent_id', 'id');
+		}
+
+		public function children()
+		{
+			return $this->hasMany(User::class, 'parent_id', 'id');
+		}
+
+		public function limiter()
+		{
+			return $this->belongsTo(Limiter::class, 'limiter_id', 'limiter_id');
 		}
 }
