@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('tb_payments', function (Blueprint $table) {
             $table->id('payment_id');
-						$table->foreignId('profile_id');
+						$table->foreignId('user_id');
 						$table->foreignId('canteen_id');
 						$table->integer('bill');
 						$table->json('items');

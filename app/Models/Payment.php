@@ -17,7 +17,7 @@ class Payment extends Model
 
 		public function user()
 		{
-			return $this->belongsTo(UserProfile::class, 'profile_id', 'profile_id');
+			return $this->belongsTo(User::class, 'user_id', 'id');
 		}
 
 		public function canteen()

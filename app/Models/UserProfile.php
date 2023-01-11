@@ -15,24 +15,4 @@ class UserProfile extends Model
 		protected $dates = ['deleted_at'];
 		
 		protected $guarded = ['profile_id'];
-
-		public function user()
-		{
-			return $this->belongsTo(User::class, 'user_id', 'id');
-		}
-
-		public function finance()
-		{
-			return $this->belongsTo(Finance::class, 'finance_id', 'finance_id');
-		}
-
-		public function parent()
-		{
-			return $this->belongsTo(UserProfile::class, 'parent_id', 'profile_id');
-		}
-
-		public function children()
-		{
-			return $this->hasMany(UserProfile::class, 'parent_id', 'profile_id');
-		}
 }
