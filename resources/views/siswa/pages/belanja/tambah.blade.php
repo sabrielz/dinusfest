@@ -8,7 +8,7 @@
 
 	<div class="card w-100 shadow mb-4">
 		<div class="card-body p-2">
-			<form id="resultForm" action="" method="post">
+			<form id="resultForm" action="/siswa/kantin" method="post">
 				@csrf
 				<table class="table table-hover" id="selectedJajan">
 					<thead>
@@ -36,6 +36,7 @@
 						</tr> --}}
 					</tbody>
 				</table>
+				<input type="hidden" name="canteen_id" value="{{ $kantin->canteen_id }}">
 			</form>
 		</div>
 	</div>
@@ -120,7 +121,7 @@
 	}
 
 	function renderTable(tbody, action, selecteds, type) {
-		$(tbody).empty(); let iter = 1;
+		$(tbody).empty(); let iter = 1; let index_k = 0; let index_v = 0;
 		for (let jajanId in selecteds) {
 			let items = selecteds[jajanId];
 			let newrow = document.createElement('tr');
@@ -131,8 +132,9 @@
 				newrow.innerHTML += `<td>${text}</td>`;
 			});
 
-			if (type === 'selected') {
-				newrow.innerHTML += `<td><input type="number" class="form-control" value="1" /></td>`
+			if (type === 'selected') {				
+				newrow.innerHTML += `<input type="hidden" name="items[${index_k++}][product_id]" value="${jajanId}">`;
+				newrow.innerHTML += `<td><input type="number" name="items[${index_v++}][jumlah]" class="form-control" value="1" /></td>`
 			}
 			
 			newrow.innerHTML += `<td>${action}</td>`;

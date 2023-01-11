@@ -88,6 +88,7 @@ Route::prefix('/siswa')->group(function () {
 	Route::get('/laporan', fn() => view('siswa.pages.laporan'));
 	Route::get('/belanja', [BelanjaController::class, 'index']);
 	Route::get('/kantin/{canteen}', [BelanjaController::class, 'showCanteen']);
+	Route::post('/kantin', [BelanjaController::class, 'storePayment']);
 	Route::get('/belanja/keranjang', fn() => view('siswa.pages.belanja.keranjang'));
 	Route::get('/profil', fn() => view('siswa.pages.profile'));
 });
