@@ -34,7 +34,7 @@ class DashboardController extends Controller
 
     public function kontrol() {
         return view('admin.pages.kontrol', [
-            'data_jajan' => Product::all()
+            'data_jajan' => Product::with('category')->get()
         ]);
     }
 

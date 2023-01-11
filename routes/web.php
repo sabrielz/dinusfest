@@ -37,14 +37,15 @@ Route::prefix('/dashboard')->group(function () {
 	Route::controller(DashboardController::class)->group(function () {
 		Route::get('/', 'index');
 		Route::get('/topup', 'topup');
-		Route::get('/profil', 'profil');
 		Route::get('/laporan', 'laporan');
 		Route::get('/kontrol', 'kontrol');
 	});
 
-	Route::prefix('/pengguna')->controller(PenggunaController::class)->group(function () {
-		Route::get('/pengguna', 'index');
-		Route::get('/pengguna/tambah', 'tambah');
+	Route::prefix('/pengguna')->group(function () {
+		Route::controller(PenggunaController::class)->group(function () {
+			Route::get('/', 'index');
+			Route::get('/tambah', 'tambah');
+		});
 	});
 
 });
