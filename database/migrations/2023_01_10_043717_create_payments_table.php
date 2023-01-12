@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('tb_payments', function (Blueprint $table) {
             $table->id('payment_id');
-						$table->foreignId('user_id');
-						$table->foreignId('canteen_id');
+						$table->string('type')->default('product');
+						$table->foreignId('user_id')->default(0);
+						$table->foreignId('finance_id')->default(0);
+						$table->foreignId('canteen_id')->default(0);
 						$table->integer('bill');
-						$table->json('items');
+						$table->json('items')->nullable();
             $table->timestamps();
 						$table->softDeletes();
         });

@@ -49,4 +49,8 @@ class User extends Authenticatable
 		{
 			return $this->belongsTo(Limiter::class, 'limiter_id', 'limiter_id');
 		}
+
+		public function payments() {
+			return $this->hasMany(Payment::class);
+		}
 }

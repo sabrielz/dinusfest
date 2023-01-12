@@ -27,7 +27,13 @@ class AdminController extends Controller {
         ]);
 
         $user = User::find($creden['user']);
+        dd($user->finance);
         $user->finance()->update([ 'finance_balance' => $user->finance->finance_balance + $creden['bayar'] ]);
+        $user->payments()->create([
+            'type' => 'topup',
+            'finance_id' => $user->finance->id,
+            'bill' => $creden['bayar'],
+        ]);
 
         return back()->withErrors([
             'alerts' => ['success' => 'Berhasil menambahkan saldo.']
@@ -41,6 +47,8 @@ class AdminController extends Controller {
     }
 
     public function laporan() {
+        // $laporan = 
+        
         return view('admin.pages.laporan', [
 
         ]);
