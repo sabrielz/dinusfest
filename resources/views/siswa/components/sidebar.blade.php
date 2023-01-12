@@ -30,7 +30,7 @@
 			</li>
 			<li class="nav-item {{ Request::is('siswa/belanja*') ? 'active' : '' }} w-100">
 				<a class="nav-link" href="/siswa/belanja">
-					<i class="fe fe-gift fe-16"></i>
+					<i class="fe fe-shopping-cart fe-16"></i>
 					<span class="ml-3 item-text">Belanja</span>
 				</a>
 			</li>
