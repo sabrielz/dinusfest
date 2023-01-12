@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index() {
         return view('admin.pages.pengguna.index', [
-            'data_pengguna' => User::where('type', '=', 'siswa')->get()
+            'data_pengguna' => User::where('type', 'siswa')->get()
         ]);
     }
 

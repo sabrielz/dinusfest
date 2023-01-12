@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         $iter = 0;
-        $types = ['ortu', 'siswa', 'admin'];
+        $types = ['ortu', 'admin'];
         do {
             $finance = Finance::create([
                 'finance_balance' => 200000,
@@ -39,5 +39,22 @@ class UserSeeder extends Seeder
             ]);
             $iter++;
         } while ($iter < count($types));
+
+				$finance = Finance::create([
+					'finance_balance' => 200000,
+				]);
+				$profile = UserProfile::create([
+					'name' => 'SISWA',
+					'address' => 'siswa',
+					'birth_date' => now(),
+				]);
+				$user = User::create([
+					'username' => 'siswa',
+					'password' => Hash::make('123'),
+					'type' => 'siswa',
+					'finance_id' => 3,
+					'profile_id' => 3,
+					'parent_id' => 1,
+			]);
     }
 }
