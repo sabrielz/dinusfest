@@ -11,20 +11,22 @@
 					<thead>
 						<tr>
 							<th>No</th>
-							<th>Nama Pengguna</th>
-							<th>Username Pengguna</th>
+							<th>Nama Siswa</th>
+							<th>Nama Orang Tua</th>
 							<th>Nominal Topup</th>
 							<th>Tanggal Topup</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td>Darsono</td>
-							<td>darsono</td>
-							<td>{{ GeneralHelper::toRupiah(100000) }}</td>
-							<td>{{ GeneralHelper::toTanggal() }}</td>
-						</tr>
+						@foreach($laporan as $row)
+							<tr>
+								<td>{{ $loop->iteration }}</td>
+								<td>{{ $row->finance->user->profile->name }}</td>
+								<td>{{ $row->finance->user->parent->profile->name }}</td>
+								<td>{{ GeneralHelper::toRupiah($row->bill) }}</td>
+								<td>{{ GeneralHelper::toTanggal($row->created_at) }}</td>
+							</tr>
+						@endforeach
 					</tbody>
 				</table>
 			</div>
