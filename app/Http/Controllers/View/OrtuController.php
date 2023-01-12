@@ -61,7 +61,7 @@ class OrtuController extends Controller {
     }
 
     public function laporan() {
-        $laporan = auth()->user()->payments;
+        $laporan = auth()->user()->children[0]->payments;
         
         return view('ortu.pages.laporan', [
             'laporan' => $laporan

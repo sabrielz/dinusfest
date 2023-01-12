@@ -126,7 +126,7 @@ class UserController extends Controller
             ]);
         }
 
-        if ($request->has('password') && $request->filled('password')) {
+        if ($request->has('new_password') && $request->filled('new_password')) {
             $tb_users->update([
                 'password' => Hash::make($request->new_password)
             ]);
