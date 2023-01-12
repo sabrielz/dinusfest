@@ -3,7 +3,7 @@
 @section('content')
 	<div class="col-12">
 		<h2 class="page-title">Kontrol Pembelian</h2>
-		<p class="text-muted">Kontrol apa saja yang bisa dibeli siswa.</p>
+		<p class="text-muted">Kontrol apa saja yang tidak bisa dibeli siswa.</p>
 
 		<div class="card w-100 shadow mb-4">
 			<div class="card-body p-2">

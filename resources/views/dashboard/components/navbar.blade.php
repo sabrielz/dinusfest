@@ -4,8 +4,8 @@
 		<i class="fe fe-menu navbar-toggler-icon"></i>
 	</button>
 
-	<a class="nav-link text-muted my-2 mr-auto" href="/admin">
-		Sangumu
+	<a class="nav-link text-muted my-2 mr-auto" href="/{{ auth()->user()->type }}">
+		SANGUMU
 	</a>
 	
 	{{-- <form class="form-inline mr-auto searchform text-muted">
@@ -37,7 +37,7 @@
 				</span>
 			</a>
 			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-				<a class="dropdown-item" href="/admin/profil">Profil</a>
+				<a class="dropdown-item" href="/profil/{{ auth()->user()->id }}">Profil</a>
 				<a class="dropdown-item text-danger" href="/logout">Log Out</a>
 			</div>
 		</li>

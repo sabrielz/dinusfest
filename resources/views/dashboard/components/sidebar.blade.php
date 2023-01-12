@@ -1,19 +1,25 @@
 @php
 $type = auth()->user()->type;
 $sidebar_menu = array_merge(
+	[
+		['href' => '/'.$type, 'icon' => 'fe fe-home', 'label' => 'Beranda'],
+	],
+
 	$type === 'admin' ? [
-		['href' => '/admin', 'icon' => 'fe fe-home', 'label' => 'Beranda'],
 		['href' => '/admin/topup', 'icon' => 'fe fe-dollar-sign', 'label' => 'Topup'],
 		['href' => '/admin/pengguna', 'icon' => 'fe fe-users', 'label' => 'Pengguna'],
-		['href' => '/admin/laporan', 'icon' => 'fe fe-file-text', 'label' => 'Laporan'],
+		['href' => '/admin/laporan', 'icon' => 'fe fe-file-text', 'label' => 'Laporan Topup'],
+		['href' => '/admin/rekap', 'icon' => 'fe fe-file-text', 'label' => 'Rekap Transaksi'],
 	] : ( $type === 'ortu' ? [
-		['href' => '/ortu', 'icon' => 'fe fe-home', 'label' => 'Beranda'],
 		['href' => '/ortu/kontrol', 'icon' => 'fe fe-link', 'label' => 'Batasi Pembelian'],
 		['href' => '/ortu/laporan', 'icon' => 'fe fe-file-text', 'label' => 'Laporan'],
-	] : [
-
+	] : [	
+		['href' => '/siswa/belanja', 'icon' => 'fe fe-shopping-cart', 'label' => 'Belanja'],
+		['href' => '/siswa/laporan', 'icon' => 'fe fe-file-text', 'label' => 'Laporan'],
 	] ),
+	
 	[
+		['href' => '/profil/'.auth()->user()->id, 'icon' => 'fe fe-user', 'label' => 'Profil'],
 		['href' => '/logout', 'icon' => 'fe fe-log-out', 'label' => 'Logout'],
 	]
 

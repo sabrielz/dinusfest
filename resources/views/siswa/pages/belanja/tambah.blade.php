@@ -92,6 +92,12 @@
 	let selected = {
 	}
 
+	let limited = [
+		@foreach (auth()->user()->limiter->items ?? [] as $id)
+			{{ $id }},
+		@endforeach
+	];
+
 	let products = {
 		@foreach ($products as $product)
 			{{ $product->product_id }}: ['{{ $product->product_name }}', '{{ $product->category->category_name }}', '{{ GeneralHelper::toRupiah($product->product_price) }}'],
@@ -136,8 +142,20 @@
 				newrow.innerHTML += `<input type="hidden" name="items[${index_k++}][product_id]" value="${jajanId}">`;
 				newrow.innerHTML += `<td><input type="number" name="items[${index_v++}][jumlah]" class="form-control" value="1" /></td>`
 			}
+
+			let islimited = false;
+			for (let id of limited) {
+				if (id == jajanId) {
+					islimited = true;
+				}
+			}
 			
-			newrow.innerHTML += `<td>${action}</td>`;
+			if (islimited) {
+				newrow.innerHTML += `<td>Tidak dapat dibeli.</td>`;
+			} else {
+				newrow.innerHTML += `<td>${action}</td>`;
+			}
+			
 			$(tbody).append(newrow);
 		}
 	}

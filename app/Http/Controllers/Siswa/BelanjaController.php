@@ -37,8 +37,15 @@ class BelanjaController extends Controller
 		$bill = 0;
 
 		foreach ($request->items as $key => $value) {
-			$price = Product::select('product_price')->find($value['product_id']);
+			$price = Product::find($value['product_id']);
 			$bill += $price->product_price * $value['jumlah'];
+		}
+
+		$finance = $request->user()->finance;
+		if ($bill > $finance->finance_balance || $bill > $finance->finance_balance_daily) {
+			return back()->withErrors([
+				'alerts' => ['danger' => 'Maaf, saldo anda tidak mencukupi.']
+			]);
 		}
 
 		$payload = [
@@ -47,9 +54,17 @@ class BelanjaController extends Controller
 			'bill' => $bill,
 			'items' => $request->items
 		];
+
 		$data = Payment::create($payload);
 
-		return redirect('siswa/nota/'. $data->payment_id);
+		$finance->update([
+			'finance_balance' => $finance->finance_balance - $bill,
+			'finance_balance_daily' => $finance->finance_balance_daily - $bill
+		]);
+
+		return redirect('siswa/nota/'. $data->payment_id)->withErrors([
+            'alerts' => ['success' => 'Pembelian berhasil.']
+        ]);
 	}
 
 	public function nota(Payment $nota)

@@ -20,50 +20,45 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $iter = 0;
-        $types = ['ortu', 'admin'];
-        do {
-            $finance = Finance::create([
-                'finance_balance' => 200000,
-            ]);
-            $limiter = Limiter::create([
-                'limiter_id' => $iter+1
-            ]);
-            $profile = UserProfile::create([
-                'name' => strtoupper($types[$iter]),
-                'address' => $types[$iter],
-                'birth_date' => now(),
-            ]);
-            $user = User::create([
-                'username' => $types[$iter],
-                'password' => Hash::make('123'),
-                'type' => $types[$iter],
-                'finance_id' => $iter+1,
-                'profile_id' => $iter+1,
-                'limiter_id' => $iter+1,
-            ]);
-            $iter++;
-        } while ($iter < count($types));
+        // $iter = 0;
+        // $types = ['ortu', 'admin'];
+        // do {
+        //     $finance = Finance::create([
+        //         'finance_balance' => 200000,
+        //     ]);
+        //     $limiter = Limiter::create([
+        //         'limiter_id' => $iter+1
+        //     ]);
+        //     $profile = UserProfile::create([
+        //         'name' => strtoupper($types[$iter]),
+        //         'address' => $types[$iter],
+        //         'birth_date' => now(),
+        //     ]);
+        //     $user = User::create([
+        //         'username' => $types[$iter],
+        //         'password' => Hash::make('123'),
+        //         'type' => $types[$iter],
+        //         'finance_id' => $iter+1,
+        //         'profile_id' => $iter+1,
+        //         'limiter_id' => $iter+1,
+        //     ]);
+        //     $iter++;
+        // } while ($iter < count($types));
 
-				$finance = Finance::create([
-					'finance_balance' => 200000,
-				]);
-                $limiter = Limiter::create([
-                    'limiter_id' => 3
-                ]);
+				// $finance = Finance::create([
+				// 	'finance_balance' => 200000,
+				// ]);
+                // $limiter = Limiter::create([
+                //     'limiter_id' => 3
+                // ]);
 				$profile = UserProfile::create([
-					'name' => 'SISWA',
-					'address' => 'siswa',
-					'birth_date' => now(),
+					'name' => 'Administrator',
 				]);
 				$user = User::create([
-					'username' => 'siswa',
+					'username' => 'admin',
 					'password' => Hash::make('123'),
-					'type' => 'siswa',
-					'finance_id' => 3,
-					'profile_id' => 3,
-					'limiter_id' => 3,
-					'parent_id' => 1,
+					'type' => 'admin',
+					'profile_id' => 1,
 			]);
     }
 }

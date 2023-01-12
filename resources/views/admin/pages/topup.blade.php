@@ -32,23 +32,6 @@
 							@foreach ($inputs as $input)
 								@include('components.input')
 							@endforeach
-
-							@push('script')
-							<script>
-								$(function () {
-									$.ajax({
-										url: '',
-										success: function (data) {
-											$select = $('select[data-select=pengguna]');
-											$.each(data, function () {
-												$select.append('<option></option>').attr('value', data.value).text(data.label);
-											})
-										}
-									})
-								})
-							</script>
-								
-							@endpush
 						</div>
 					</div> <!-- / .card -->
 				</div>

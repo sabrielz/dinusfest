@@ -22,6 +22,6 @@
 	</section>
 
 	<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3960.6102816722823!2d109.6487127!3d-6.9370938!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70214ff6afc36b%3A0x5926432b08332cde!2sSMK%20Muhammadiyah%20Bligo!5e0!3m2!1sid!2sid!4v1672168300649!5m2!1sid!2sid"
-width="100%" height="360" style="border:0;" allowfullscreen="true" loading="lazy"
+width="100%" height="480" style="border:0;" allowfullscreen="true" loading="lazy"
 referrerpolicy="no-referrer-when-downgrade"></iframe>
 @endsection

@@ -14,7 +14,8 @@
 								<th>No</th>
 								<th>Nama Lengkap</th>
 								<th>Nama Orang Tua</th>
-								<th>Saldo</th>
+								<th>Total Saldo</th>
+								<th>Tindakan</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -24,6 +25,14 @@
 									<td>{{ $row->profile->name }}</td>
 									<td>{{ $row->parent->profile->name }}</td>
 									<td>{{ GeneralHelper::toRupiah($row->finance->finance_balance) }}</td>
+									<td>
+										<a href="/profil/{{ $row->id }}" class="btn btn-sm btn-warning text-white">
+											<i class="fe fe-edit">Siswa</i>
+										</a>
+										<a href="/profil/{{ $row->parent->id }}" class="btn btn-sm btn-warning text-white">
+											<i class="fe fe-edit">Ortu</i>
+										</a>
+									</td>
 								</tr>
 							@endforeach
 						</tbody>

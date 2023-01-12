@@ -4,6 +4,7 @@ namespace App\Http\Controllers\View;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class OrtuController extends Controller {
@@ -37,13 +38,34 @@ class OrtuController extends Controller {
             'items' => $items
         ]);
         
-        return redirect('/ortu/kontrol');
+        return redirect('/ortu/kontrol')->withErrors([
+            'alerts' => ['Berhasil membatasi pembelian siswa.']
+        ]);
+    }
+
+    public function post_daily(Request $req, User $tb_users) {
+        $creden = $req->validate([
+            'day' => 'required', 'perday' => 'required'
+        ]);
+
+        $tb_users->limiter()->update([
+            'limit_balance' => $creden['perday']
+        ]);
+        $tb_users->finance()->update([
+            'finance_balance_daily' => $creden['perday']
+        ]);
+
+        return redirect('/ortu')->withErrors([
+            'alerts' => ['success' => 'Berhasil membagi saldo.']
+        ]);
     }
 
     public function laporan() {
-        // $laporan = auth()->user()->siswa
+        $laporan = auth()->user()->payments;
         
-        return view('ortu.pages.laporan');
+        return view('ortu.pages.laporan', [
+            'laporan' => $laporan
+        ]);
     }
     
 }

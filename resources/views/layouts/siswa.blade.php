@@ -13,6 +13,8 @@
 	<!-- Icons CSS -->
 	<link rel="stylesheet" href="/tinydash/css/feather.css">
 
+	<link rel="icon" type="image/png" sizes="16x16" href="/dist/img/main-logo-icon.png" />
+
 	<!-- Date Range Picker CSS -->
 	<link rel="stylesheet" href="/tinydash/css/daterangepicker.css">
 	<!-- App CSS -->
@@ -22,8 +24,9 @@
 </head>
 <body class="vertical  light">
 	<div class="wrapper">
-		@include('siswa.components.navbar')
-		@include('siswa.components.sidebar')
+		@include('dashboard.components.alerts')
+		@include('dashboard.components.navbar')
+		@include('dashboard.components.sidebar')
 		<main role="main" class="main-content">
 			<div class="container-fluid">
 				@yield('content')

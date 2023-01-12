@@ -8,7 +8,7 @@
 		</div>
 	</section> --}}
 
-	<section class="w-full py-28 bg-primary">
+	<section class="w-full py-[10rem] bg-primary">
 		<div class="w-full h-full flex flex-col justify-center items-center">
 			<img src="/dist/img/main-logo-horizontal-black-with-slogan.png" alt="" class="w-[90vw] max-w-[640px]">
 		</div>
@@ -49,7 +49,7 @@
 		</div>
 	</section> --}}
 
-	<section class="w-full bg-secondary text-white">
+	<section class="w-full bg-white">
 		<div class="max-w-screen-md mx-auto px-4 py-10 md:py-16">
 			<h2 class="text-center font-bold text-3xl mb-4">
 				Hubungi Kami
@@ -58,7 +58,7 @@
 				Hubungi penyedia layanan atau sosial media kami jika ada
 				kendala dalam penggunan aplikasi ini.
 			</p>
-			<a href="/kontak" class="block max-w-max mx-auto py-2 px-5 rounded border border-white hover:bg-white hover:text-dark transition mt-5">
+			<a href="/kontak" class="block max-w-max mx-auto py-2 px-5 rounded border border-dark hover:bg-dark hover:text-white transition mt-5">
 				Kontak
 			</a>
 		</div>

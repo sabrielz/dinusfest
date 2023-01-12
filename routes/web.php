@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\View\AdminController;
 use App\Http\Controllers\View\LandingPageController;
 use App\Http\Controllers\View\OrtuController;
+use App\Http\Controllers\View\SiswaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,8 +41,8 @@ Route::controller(LoginController::class)->group(function () {
 });
 
 Route::controller(UserController::class)->group(function () {
-	Route::get('/profil/{tb_users:username}', 'edit');
-	Route::post('/profil/{tb_users:username}', 'update');
+	Route::get('/profil/{tb_users:id}', 'edit');
+	Route::post('/profil/{tb_users:id}', 'update');
 });
 
 Route::prefix('/admin')->group(function () {
@@ -50,6 +51,7 @@ Route::prefix('/admin')->group(function () {
 		Route::get('/topup', 'topup');
 		Route::post('/topup', 'post_topup');
 		Route::get('/laporan', 'laporan');
+		Route::get('/rekap', 'rekap');
 	});
 
 	Route::prefix('/pengguna')->group(function () {
@@ -66,6 +68,7 @@ Route::prefix('/ortu')->group(function () {
 		Route::get('/', 'index');
 		Route::get('/kontrol', 'kontrol');
 		Route::post('/kontrol', 'post_kontrol');
+		Route::post('/daily/{tb_users:id}', 'post_daily');
 		Route::get('/laporan', 'laporan');
 	});
 });
@@ -87,12 +90,24 @@ Route::prefix('/ortu')->group(function () {
 // 	]));
 // });
 
+Route::get('/test', fn() => redirect('/siswa')->withErrors([
+	'alerts' => [
+		'danger' => 'Example danger alert!',
+		'success' => 'Example success alert!',
+		'warning' => 'Example warning alert!',
+	]
+]));
+
 Route::prefix('/siswa')->group(function () {
-	Route::get('/', fn() => view('siswa.pages.index'));
-	Route::get('/laporan', fn() => view('siswa.pages.laporan'));
-	Route::get('/belanja', [BelanjaController::class, 'index']);
-	Route::get('/kantin/{canteen}', [BelanjaController::class, 'showCanteen']);
-	Route::post('/kantin', [BelanjaController::class, 'storePayment']);
-	Route::get('/nota/{nota}', [BelanjaController::class, 'nota']);
-	Route::get('/profil', fn() => view('siswa.pages.profile'));
+	Route::controller(SiswaController::class)->group(function () {
+		Route::get('/', 'index');
+		Route::get('/laporan', 'laporan');
+	});
+
+	Route::controller(BelanjaController::class)->group(function () {
+		Route::get('/belanja', 'index');
+		Route::get('/kantin/{canteen}', 'showCanteen');
+		Route::post('/kantin', 'storePayment');
+		Route::get('/nota/{nota}', 'nota');
+	});
 });

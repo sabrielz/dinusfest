@@ -81,7 +81,9 @@ class UserController extends Controller
             'children_id' => $siswa->id
         ]);
 
-        return redirect('/admin/pengguna');
+        return redirect('/admin/pengguna')->withErrors([
+            'alerts' => ['success' => 'Berhasil membuat akun.']
+        ]);
     }
 
     /**
@@ -101,9 +103,12 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(User $tb_users)
     {
-        return view('dashboard.pages.profil');
+        $user = $tb_users;
+        return view('dashboard.pages.profil', [
+            'user' => $user
+        ]);
     }
 
     /**
@@ -115,15 +120,21 @@ class UserController extends Controller
      */
     public function update(Request $request, User $tb_users)
     {
-			UserProfile::find($tb_users->profile_id)->update([
-				'name' => $request->nama
-			]);
+        if ($request->has('nama') && $request->filled('nama')) {
+            UserProfile::find($tb_users->profile_id)->update([
+                'name' => $request->nama
+            ]);
+        }
 
-			$tb_users->update([
-				'password' => Hash::make($request->new_password)
-			]);
+        if ($request->has('password') && $request->filled('password')) {
+            $tb_users->update([
+                'password' => Hash::make($request->new_password)
+            ]);
+        }
 
-			return 'ok';
+        return back()->withErrors([
+            'alerts' => ['success' => 'Berhasil mengubah profil.']
+        ]);
     }
 
     /**

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('tb_finances', function (Blueprint $table) {
             $table->id('finance_id');
             $table->integer('finance_balance')->default(0);
+            $table->integer('finance_balance_daily')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

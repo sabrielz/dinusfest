@@ -35,7 +35,7 @@ class AdminController extends Controller {
             'bill' => $creden['bayar'],
         ]);
 
-        return back()->withErrors([
+        return redirect('/admin/laporan')->withErrors([
             'alerts' => ['success' => 'Berhasil menambahkan saldo.']
         ]);
     }
@@ -57,6 +57,14 @@ class AdminController extends Controller {
     public function kontrol() {
         return view('admin.pages.kontrol', [
             'data_jajan' => Product::with('category')->get()
+        ]);
+    }
+
+    public function rekap() {
+        $rekap = Payment::where('type', 'product')->get();
+
+        return view('admin.pages.rekap', [
+            'rekap' => $rekap
         ]);
     }
 
