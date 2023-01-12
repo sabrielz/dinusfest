@@ -15,9 +15,13 @@ class Payment extends Model
 		protected $guarded = ['payment_id'];
 		protected $dates = ['deleted_at'];
 
-		public function user()
-		{
-			return $this->belongsTo(User::class, 'user_id', 'id');
+		// public function user()
+		// {
+		// 	return $this->belongsTo(User::class, 'user_id', 'id');
+		// }
+
+		public function finance() {
+			return $this->belongsTo(Finance::class, 'finance_id', 'id');
 		}
 
 		public function canteen()
