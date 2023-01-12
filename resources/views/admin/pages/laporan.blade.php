@@ -21,8 +21,8 @@
 						@foreach($laporan as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td>
-								<td>{{ $row->finance->user->profile->name }}</td>
-								<td>{{ $row->finance->user->parent->profile->name }}</td>
+								<td>{{ $row->user->profile->name }}</td>
+								<td>{{ $row->user->parent->profile->name }}</td>
 								<td>{{ GeneralHelper::toRupiah($row->bill) }}</td>
 								<td>{{ GeneralHelper::toTanggal($row->created_at) }}</td>
 							</tr>
