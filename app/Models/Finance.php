@@ -15,8 +15,11 @@ class Finance extends Model
 		protected $guarded = ['finance_id'];
 		protected $dates = ['deleted_at'];
 
-		public function user()
-		{
+		public function user() {
 			$this->hasMany(User::class, 'finance_id', 'finance_id');
 		}
+
+		// public function payments() {
+		// 	return $this->hasManyThrough(Payment::class, User::class, '')
+		// }
 }

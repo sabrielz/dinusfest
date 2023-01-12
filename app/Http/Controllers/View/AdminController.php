@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\View;
 
 use App\Http\Controllers\Controller;
+use App\Models\Payment;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -27,11 +28,10 @@ class AdminController extends Controller {
         ]);
 
         $user = User::find($creden['user']);
-        dd($user->finance);
         $user->finance()->update([ 'finance_balance' => $user->finance->finance_balance + $creden['bayar'] ]);
         $user->payments()->create([
             'type' => 'topup',
-            'finance_id' => $user->finance->id,
+            'finance_id' => $user->finance->finance_id,
             'bill' => $creden['bayar'],
         ]);
 
@@ -47,10 +47,10 @@ class AdminController extends Controller {
     }
 
     public function laporan() {
-        // $laporan = 
+        $laporan = Payment::with([])->where('type', 'topup')->latest()->get();
         
         return view('admin.pages.laporan', [
-
+            'laporan' => $laporan
         ]);
     }
 
