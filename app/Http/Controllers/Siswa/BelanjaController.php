@@ -49,6 +49,13 @@ class BelanjaController extends Controller
 		];
 		$data = Payment::create($payload);
 
-		return $data;
+		return redirect('siswa/nota/'. $data->payment_id);
+	}
+
+	public function nota(Payment $nota)
+	{
+		return view('siswa.pages.belanja.nota', [
+			'payment' => $nota
+		]);
 	}
 }

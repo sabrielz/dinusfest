@@ -16,9 +16,9 @@ class KantinSeeder extends Seeder
     public function run()
     {
         DB::table('tb_canteens')->insert([
-					['canteen_name' => 'Cafe Elite Mul', 'canteen_owner' => 'Mulyadi', 'products' => '[{"key": "product_id", "value": [1,2,3]}]'],
-					['canteen_name' => 'Cafe Superior Mul', 'canteen_owner' => 'Mulyadi', 'products' => '[{"key": "product_id", "value": [1,2,3]}]'],
-					['canteen_name' => 'Cafe Mega Mul', 'canteen_owner' => 'Mulyadi', 'products' => '[{"key": "product_id", "value": [1,2,3]}]'],
+					['canteen_name' => 'Cafe Elite Mul', 'canteen_owner' => 'Mulyadi', 'products' => '[{"key": "product_id", "value": [1,2,6,15]}]'],
+					['canteen_name' => 'Cafe Superior Mul', 'canteen_owner' => 'Mulyadi', 'products' => '[{"key": "product_id", "value": [1,2,5,13]}]'],
+					['canteen_name' => 'Cafe Mega Mul', 'canteen_owner' => 'Mulyadi', 'products' => '[{"key": "product_id", "value": [1,2,3,11,14]}]'],
 				]);
     }
 }
