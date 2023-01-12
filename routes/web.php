@@ -48,6 +48,7 @@ Route::prefix('/admin')->group(function () {
 	Route::controller(AdminController::class)->group(function () {
 		Route::get('/', 'index');
 		Route::get('/topup', 'topup');
+		Route::post('/topup', 'post_topup');
 		Route::get('/laporan', 'laporan');
 	});
 
@@ -55,6 +56,7 @@ Route::prefix('/admin')->group(function () {
 		Route::controller(UserController::class)->group(function () {
 			Route::get('/', 'index');
 			Route::get('/tambah', 'create');
+			Route::post('/', 'store');
 		});
 	});
 });

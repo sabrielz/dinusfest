@@ -4,6 +4,7 @@ namespace App\Http\Controllers\View;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller {
@@ -13,8 +14,23 @@ class AdminController extends Controller {
     }
 
     public function topup() {
+        $pengguna = User::where('type', 'siswa')->get();
+        
         return view('admin.pages.topup', [
+            'data_pengguna' => $pengguna
+        ]);
+    }
 
+    public function post_topup(Request $req) {
+        $creden = $req->validate([
+            'bayar' => 'required', 'user' => 'required'
+        ]);
+
+        $user = User::find($creden['user']);
+        $user->finance()->update([ 'finance_balance' => $user->finance->finance_balance + $creden['bayar'] ]);
+
+        return back()->withErrors([
+            'alerts' => ['success' => 'Berhasil menambahkan saldo.']
         ]);
     }
 

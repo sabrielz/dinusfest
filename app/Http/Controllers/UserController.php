@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\UserProfile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -14,7 +16,7 @@ class UserController extends Controller
      */
     public function index() {
         return view('admin.pages.pengguna.index', [
-
+            'data_pengguna' => User::where('type', '=', 'siswa')->get()
         ]);
     }
 
@@ -33,9 +35,36 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        $creden = $request->validate([
+            'nama_siswa' => 'required',
+            'username_siswa' => 'required|unique:tb_users,username',
+            'password_siswa' => 'required',
+            'nama_ortu' => 'required',
+            'username_ortu' => 'required|unique:tb_users,username',
+            'password_ortu' => 'required',
+        ]);
+
+        $siswa_profile = UserProfile::create([
+            'name' => $creden['nama_siswa'],
+        ]);
+
+        $ortu_profile = UserProfile::create([
+            'name' => $creden['nama_ortu'],
+        ]);
+
+        User::create([
+            'username' => $creden['username_siswa'],
+            'password' => Hash::make($creden['password_siswa']),
+            'profile_id' => $siswa_profile->id
+        ]);
+        User::create([
+            'username' => $creden['username_ortu'],
+            'password' => Hash::make($creden['password_ortu']),
+            'profile_id' => $ortu_profile->id
+        ]);
+
+        return redirect('/admin/pengguna');
     }
 
     /**

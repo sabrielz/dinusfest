@@ -13,23 +13,19 @@
 							<tr>
 								<th>No</th>
 								<th>Nama Lengkap</th>
+								<th>Nama Orang Tua</th>
 								<th>Saldo</th>
-								<th>Tindakan</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
-								<td>Darsono</td>
-								<td>{{ GeneralHelper::toRupiah(100000) }}</td>
-								<td>
-									<div class="btn-group btn-group-sm" role="group">
-										<a href="profil" class="btn btn-warning">
-											<i class="fe fe-edit"></i>
-										</a>
-									</div>
-								</td>
-							</tr>
+							@foreach($data_pengguna as $row)
+								<tr>
+									<td>{{ $loop->iteration }}</td>
+									<td>{{ $row->profile->name }}</td>
+									<td>{{ $row->parent->profile->name }}</td>
+									<td>{{ GeneralHelper::toRupiah($row->finance->finance_balance) }}</td>
+								</tr>
+							@endforeach
 						</tbody>
 					</table>
 				</div>

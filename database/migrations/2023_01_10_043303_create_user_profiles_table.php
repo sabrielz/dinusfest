@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('tb_user_profiles', function (Blueprint $table) {
             $table->id('profile_id');
-						$table->string('name');
-						$table->string('address');
-						$table->date('birth_date');
+						$table->string('name')->nullable();
+						$table->string('address')->nullable();
+						$table->date('birth_date')->nullable();
             $table->timestamps();
 						$table->softDeletes();
         });

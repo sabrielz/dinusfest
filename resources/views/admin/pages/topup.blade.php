@@ -13,13 +13,22 @@
 							<strong class="card-title">Nominal Topup</strong>
 						</div>
 						<div class="card-body">
-							@php $inputs = [
+							@csrf @php $inputs = [
 								['type' => 'number', 'name' => 'bayar', 'label' => 'Nominal Topup'],
-								['type' => 'select2', 'name' => 'user', 'label' => 'Pengguna', 'options' => [
+								['type' => 'select2', 'name' => 'user', 'label' => 'Nama Siswa', 'options' => [
 									['label' => '-- Pilih Pengguna --', 'value' => '']
 								], 'attr' => 'data-select="pengguna"'],
-							] @endphp
+							];
+
+							foreach($data_pengguna as $row) {
+								$inputs[1]['options'][] = [
+									'label' => $row->profile->name, 
+									'value' => $row->id
+								];
+							}
 							
+							@endphp
+
 							@foreach ($inputs as $input)
 								@include('components.input')
 							@endforeach
