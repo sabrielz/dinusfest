@@ -2,5 +2,6 @@
 
 @section('content')
 	<section class="w-full">
+		
 	</section>
 @endsection

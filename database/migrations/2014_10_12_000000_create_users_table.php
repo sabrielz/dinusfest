@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('profile_id')->default(0);
             $table->foreignId('finance_id')->default(0);
             $table->foreignId('parent_id')->default(0);
+            $table->foreignId('children_id')->default(0);
             $table->foreignId('limiter_id')->default(0);
             $table->softDeletes();
             $table->timestamps();

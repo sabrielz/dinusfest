@@ -20,7 +20,6 @@
 						<tbody>
 							@foreach($data_pengguna as $row)
 								<tr>
-									{{-- @dd($row) --}}
 									<td>{{ $loop->iteration }}</td>
 									<td>{{ $row->profile->name }}</td>
 									<td>{{ $row->parent->profile->name }}</td>

@@ -47,7 +47,7 @@ class AdminController extends Controller {
     }
 
     public function laporan() {
-        $laporan = Payment::with([])->where('type', 'topup')->latest()->get();
+        $laporan = Payment::where('type', 'topup')->latest()->get();
         
         return view('admin.pages.laporan', [
             'laporan' => $laporan

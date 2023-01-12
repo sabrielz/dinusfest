@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Finance;
+use App\Models\Limiter;
 use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
@@ -53,19 +55,30 @@ class UserController extends Controller
             'name' => $creden['nama_ortu'],
         ]);
 
+        $finance = Finance::create();
+        $limiter = Limiter::create();
+
         $ortu = User::create([
             'type' => 'ortu',
             'username' => $creden['username_ortu'],
             'password' => Hash::make($creden['password_ortu']),
-            'profile_id' => $ortu_profile->profile_id
+            'profile_id' => $ortu_profile->profile_id,
+            'finance_id' => $finance->finance_id,
+            'limiter_id' => $limiter->limiter_id,
         ]);
 
-        User::create([
+        $siswa = User::create([
             'type' => 'siswa',
             'username' => $creden['username_siswa'],
             'password' => Hash::make($creden['password_siswa']),
             'profile_id' => $siswa_profile->profile_id,
-            'parent_id' => $ortu->id
+            'parent_id' => $ortu->id,
+            'finance_id' => $finance->finance_id,
+            'limiter_id' => $limiter->limiter_id,
+        ]);
+
+        $ortu->update([
+            'children_id' => $siswa->id
         ]);
 
         return redirect('/admin/pengguna');

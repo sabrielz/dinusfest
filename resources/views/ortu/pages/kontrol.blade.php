@@ -7,7 +7,7 @@
 
 		<div class="card w-100 shadow mb-4">
 			<div class="card-body p-2">
-				<form id="resultForm" action="" method="post">
+				<form id="resultForm" action="" method="post" onsubmit="submitForm(this)">
 					@csrf
 					<table class="table table-hover" id="selectedJajan">
 						<thead>
@@ -33,6 +33,8 @@
 							</tr> --}}
 						</tbody>
 					</table>
+
+					<input type="hidden" name="items" value="{!! json_encode(auth()->user()->limiter->items) ?? json_encode([]) !!}">
 				</form>
 			</div>
 		</div>
@@ -77,12 +79,15 @@
 		@push('scripts')
 			<script>
 					let selected = {
-						2: ['Tempe Goreng', 'Gorengan'],
-						4: ['Batagor', 'Gorengan'],
+						@foreach ($data_limited as $id => $product)
+							{{ $product->product_id }}: ['{{ $product->product_name }}', '{{ $product->category->category_name }}', '{{ GeneralHelper::toRupiah($product->product_price) }}'],
+						@endforeach
 					}
 
 					let products = {
-						5: ['Nabati', 'Snack'],
+						@foreach ($data_product as $id => $product)
+							{{ $product->product_id }}: ['{{ $product->product_name }}', '{{ $product->category->category_name }}', '{{ GeneralHelper::toRupiah($product->product_price) }}'],
+						@endforeach
 					};
 
 					let actions = {
@@ -151,6 +156,20 @@
 							products[jajanId] = rowdata;
 						}
 						render();
+					}
+
+					function submitForm (elem) {
+						elem = $(elem);
+						let resultInput = elem.find('input[name=items]');
+						let rows = elem.find('tr');
+						let results = [];
+						rows.map((i, row) => {
+							let productId = $(row).data('jajan-id');
+							if (typeof parseInt(productId) !== 'number') return;
+							console.log(productId)
+							results.push(productId);
+						})
+						$(resultInput).val(JSON.stringify(results));
 					}
 
 			</script>

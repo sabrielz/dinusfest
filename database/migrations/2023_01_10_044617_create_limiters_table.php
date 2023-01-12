@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('tb_limiters', function (Blueprint $table) {
             $table->id('limiter_id');
-						$table->json('items');
-						$table->integer('daily_items');
+            $table->json('items')->nullable();
+            $table->integer('daily_items')->default(0);
             $table->timestamps();
-						$table->softDeletes();
+            $table->softDeletes();
         });
     }
 

@@ -65,6 +65,8 @@ Route::prefix('/ortu')->group(function () {
 	Route::controller(OrtuController::class)->group(function () {
 		Route::get('/', 'index');
 		Route::get('/kontrol', 'kontrol');
+		Route::post('/kontrol', 'post_kontrol');
+		Route::get('/laporan', 'laporan');
 	});
 });
 
