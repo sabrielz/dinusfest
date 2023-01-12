@@ -5,6 +5,7 @@ namespace App\Helpers;
 use App\Models\DataJenisKelamin;
 use App\Models\DataJurusan;
 use App\Models\Jurusan;
+use App\Models\Product;
 use App\Models\Seragam;
 use App\Models\Status;
 use DateTime;
@@ -187,6 +188,27 @@ class ModelHelper
 				$admin[] = $iter++.'. '.static::formatTanggal($pembayaran['created_at']).$str_lunas;
 			}
 		} return implode('<br/>', $admin);
+	}
+
+	public static function getProdukName($produk_id)
+	{
+		$produk = Product::select('product_name')->find($produk_id);
+
+		return $produk->product_name;
+	}
+
+	public static function getProdukCategory($produk_id)
+	{
+		$produk = Product::find($produk_id);
+
+		return $produk->category->category_name;
+	}
+
+	public static function getProdukHarga($produk_id)
+	{
+		$produk = Product::find($produk_id);
+
+		return $produk->product_price;
 	}
 
 }
