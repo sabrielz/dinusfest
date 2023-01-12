@@ -113,9 +113,17 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $tb_users)
     {
-        //
+			UserProfile::find($tb_users->profile_id)->update([
+				'name' => $request->nama
+			]);
+
+			$tb_users->update([
+				'password' => Hash::make($request->new_password)
+			]);
+
+			return 'ok';
     }
 
     /**

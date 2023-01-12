@@ -25,30 +25,30 @@ class User extends Authenticatable
         'id',
     ];
 
-		public function profile()
-		{
-			return $this->belongsTo(UserProfile::class, 'profile_id', 'profile_id');
-		}
+	public function profile()
+	{
+		return $this->belongsTo(UserProfile::class, 'profile_id', 'profile_id');
+	}
 
-		public function finance()
-		{
-			return $this->belongsTo(Finance::class, 'finance_id', 'finance_id');
-		}
+	public function finance()
+	{
+		return $this->belongsTo(Finance::class, 'finance_id', 'finance_id');
+	}
 
-		public function parent() {
-			return $this->belongsTo(User::class, 'parent_id', 'id');
-		}
+	public function parent() {
+		return $this->belongsTo(User::class, 'parent_id', 'id');
+	}
 
 		public function children() {
 			return $this->hasMany(User::class, 'parent_id', 'id');
 		}
 
-		public function limiter()
-		{
-			return $this->belongsTo(Limiter::class, 'limiter_id', 'limiter_id');
-		}
+	public function limiter()
+	{
+		return $this->belongsTo(Limiter::class, 'limiter_id', 'limiter_id');
+	}
 
-		public function payments() {
-			return $this->hasMany(Payment::class, 'user_id', 'id');
-		}
+	public function payments() {
+		return $this->hasMany(Payment::class, 'user_id', 'id');
+	}
 }
