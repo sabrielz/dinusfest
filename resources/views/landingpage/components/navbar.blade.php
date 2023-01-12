@@ -4,7 +4,7 @@
 	['href' => '/kontak', 'label' => 'Kontak'],
 ] ?>
 
-<nav id="navbar" class="w-full relative bg-primary text-white shadow-md">
+<nav id="navbar" class="w-full bg-primary text-white shadow-md fixed top-0 left-0 right-0 z-10">
 	<div class="max-w-screen-lg mx-auto px-2 sm:px-4 py-0">
 		<div class="flex justify-start md:justify-between gap-2 items-center">
 
@@ -17,7 +17,7 @@
 			</a>
 
 			<div id="navbarMenu" class="hidden md:block absolute md:relative top-full left-0 right-0 z-20">
-				<ul class="flex m-0 flex-col md:flex-row w-full bg-primary justify-center items-center">
+				<ul class="flex m-0 flex-col md:flex-row w-full bg-primary justify-center items-center" data-sticky-background>
 					@foreach ($navbar_menu as $menu)
 					<?php $active = request()->is($menu['active'] ?? substr($menu['href'], 1).'*') ?>
 	

@@ -14,7 +14,7 @@
     <title></title>
 
 		{{-- Css --}}
-    <link rel="icon" type="image/png" sizes="16x16" href="/matrix/img/favicon.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/dist/img/main-logo-icon.png" />
 		<link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
 		{{-- <link rel="stylesheet" href="/bootstrap/css/bootstrap-reboot.min.css"> --}}
 		<link rel="stylesheet" href="/dist/css/landingpage.css">
@@ -33,6 +33,27 @@
 		{{-- Javascript --}}
     <script src="/plugins/jquery/dist/jquery.min.js"></script>
 		<script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script>
+			$(function () {
+	
+				// Navbar Responsive
+				var toggler = $('#navbarToggler');
+				var menu = $('#navbarMenu');
+				toggler.click((v) => {
+					v.preventDefault();
+					menu.toggle('hidden');
+				});
+
+				// Navbar Dropdown
+				var toggler = $('.navbar-dropdown-toggler');
+				toggler.click(v => {
+					v.preventDefault();
+					var menu = toggler.parent().children()[1];
+					$(menu).toggle('hidden');
+				})
+				
+			})
+		</script>
 		@stack('scripts')
   </body>
 </html>
