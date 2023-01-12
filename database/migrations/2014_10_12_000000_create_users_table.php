@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('username');
             $table->string('password');
             $table->string('type');
-            $table->foreignId('profile_id');
-            $table->foreignId('finance_id');
+            $table->foreignId('profile_id')->default(0);
+            $table->foreignId('finance_id')->default(0);
             $table->foreignId('parent_id')->default(0);
             $table->foreignId('limiter_id')->default(0);
             $table->softDeletes();

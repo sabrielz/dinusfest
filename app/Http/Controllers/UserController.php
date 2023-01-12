@@ -53,15 +53,19 @@ class UserController extends Controller
             'name' => $creden['nama_ortu'],
         ]);
 
-        User::create([
-            'username' => $creden['username_siswa'],
-            'password' => Hash::make($creden['password_siswa']),
-            'profile_id' => $siswa_profile->id
-        ]);
-        User::create([
+        $ortu = User::create([
+            'type' => 'ortu',
             'username' => $creden['username_ortu'],
             'password' => Hash::make($creden['password_ortu']),
-            'profile_id' => $ortu_profile->id
+            'profile_id' => $ortu_profile->profile_id
+        ]);
+
+        User::create([
+            'type' => 'siswa',
+            'username' => $creden['username_siswa'],
+            'password' => Hash::make($creden['password_siswa']),
+            'profile_id' => $siswa_profile->profile_id,
+            'parent_id' => $ortu->id
         ]);
 
         return redirect('/admin/pengguna');

@@ -37,7 +37,7 @@ class User extends Authenticatable
 
 		public function parent()
 		{
-			return $this->belongsTo(User::class, 'parent_id', 'id');
+			return $this->belongsTo(User::class, 'id', 'parent_id');
 		}
 
 		// public function children()
